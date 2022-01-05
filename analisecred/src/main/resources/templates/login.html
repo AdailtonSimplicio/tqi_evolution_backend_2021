@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
-<h1>Pegou!!!!!!!!!!!!</h1>
+<div th:if="${param.error}">
+    Senha ou Email invalido!
+</div>
+<div th:if="${param.logout}">
+    Você esta desconectado!
+</div>
+
+<form th:action="@{/login}" method="post">
+    <div>
+        <label>Email: <input type="text" name="username"></label>
+    </div>
+    <div>
+        <label>Senha: <input type="password" name="password"></label>
+    </div>
+    <div><input type="submit" value="Acessar"></div>
+</form>
 
 </body>
 </html>

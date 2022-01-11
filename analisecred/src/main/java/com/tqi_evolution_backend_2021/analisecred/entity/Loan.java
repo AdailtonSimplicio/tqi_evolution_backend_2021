@@ -34,16 +34,5 @@ public class Loan implements Serializable {
     @JoinColumn(name = "cliente",referencedColumnName = "id")
     private Client client;
 
-    /*@ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Client client;
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client cliente) {
-        this.client = client;
-    }*/
 }
 

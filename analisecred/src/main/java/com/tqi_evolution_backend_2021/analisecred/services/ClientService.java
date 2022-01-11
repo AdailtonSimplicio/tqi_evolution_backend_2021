@@ -1,6 +1,9 @@
 package com.tqi_evolution_backend_2021.analisecred.services;
 
+import com.tqi_evolution_backend_2021.analisecred.dto.LoginClientDTO;
+import com.tqi_evolution_backend_2021.analisecred.dto.MensagemResponseDTO;
 import com.tqi_evolution_backend_2021.analisecred.entity.Client;
+import com.tqi_evolution_backend_2021.analisecred.exception.ClientException;
 import com.tqi_evolution_backend_2021.analisecred.exception.ClientNotFoundException;
 import com.tqi_evolution_backend_2021.analisecred.repository.ClientRepository;
 import lombok.AllArgsConstructor;
@@ -40,6 +43,25 @@ public class ClientService {
     //Metodo Delete Por Id
     public void removerPorId(long id){
         clientRepository.deleteById(id);
+    }
+    //Metodo verificar login
+    public MensagemResponseDTO loginn(LoginClientDTO loginClientDTO) throws ClientException {
+
+        Optional<Client> optionalClient = clientRepository.findByEmail(loginClientDTO.getEmail());
+        Client client = optionalClient.get();
+        String msg = " ";
+
+        if((client.getEmail().equals(loginClientDTO.getEmail()) &&
+                (client.getSenha().equals(loginClientDTO.getSenha())))) {
+
+            msg = "Bem Vindo ao Sistema!";
+
+        } else msg = "Senha Inválida!";
+
+        return MensagemResponseDTO
+                .builder()
+                .mensagem(msg)
+                .build();
     }
 
 }

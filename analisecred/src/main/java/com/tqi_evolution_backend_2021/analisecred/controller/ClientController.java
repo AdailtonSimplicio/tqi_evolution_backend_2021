@@ -37,7 +37,7 @@ public class ClientController {
     @ResponseStatus(HttpStatus.OK)
     public Client buscarClientePorId(@PathVariable("id")Long id){
         return clientService.buscarPorId(id)
-                .orElseThrow(() ->new  ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não localizado"));
+                .orElseThrow(() ->new  ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não localizado!"));
     }
     //Metodo deletar por id
     @DeleteMapping("/{id}")
@@ -47,7 +47,7 @@ public class ClientController {
                 .map(client -> {
                     clientService.removerPorId(client.getId());
                     return Void.TYPE;
-                }).orElseThrow(() ->new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não localizado"));
+                }).orElseThrow(() ->new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não localizado!"));
     }
     //Metodo de atualização do cliente
     @PutMapping("/{id}")
@@ -57,15 +57,15 @@ public class ClientController {
                 .map(clientBase ->{
                     modelMapper.map(client,clientBase);
                     return Void.TYPE;
-                }).orElseThrow(() ->new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não localizado"));
+                }).orElseThrow(() ->new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não localizado!"));
     }
 
-    //Metodo Get -Listando um cliente e verificando seu email e a senha.
+    //Metodo verificando seu email e a senha.
 
-    @RequestMapping(value = "/cliente/UserLogin/",method = RequestMethod.GET)
-    public Client UserLogin(@RequestBody Client clienteLogin) throws ClientNotFoundException {
+    @RequestMapping(value = "/cliente/login/",method = RequestMethod.GET)
+    public Client UserLogin(@RequestBody Client clientLogin) throws ClientNotFoundException {
 
-        return clientService.UserLogin(clienteLogin);
+        return clientService.UserLogin(clientLogin);
     }
 }
 

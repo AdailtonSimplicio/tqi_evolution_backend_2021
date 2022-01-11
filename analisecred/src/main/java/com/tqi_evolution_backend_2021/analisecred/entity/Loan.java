@@ -1,6 +1,6 @@
 package com.tqi_evolution_backend_2021.analisecred.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tqi_evolution_backend_2021.analisecred.exception.ClientNotFoundException;
+/*import com.tqi_evolution_backend_2021.analisecred.exception.ClientNotFoundException;*/
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,21 +29,21 @@ public class Loan implements Serializable {
     @Column(nullable = false)
     private LocalDate dataPrimeiraParcela;
 
-    @JsonIgnore
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cliente",referencedColumnName = "id")
     private Client client;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Client cliente;
+    private Client client;
 
-    public Client getCliente() {
-        return cliente;
+    public Client getClient() {
+        return client;
     }
 
-    public void setCliente(Client cliente) {
-        this.cliente = cliente;
-    }
+    public void setClient(Client cliente) {
+        this.client = client;
+    }*/
 }
 

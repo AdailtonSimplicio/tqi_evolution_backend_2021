@@ -45,7 +45,7 @@ public class Client implements Serializable {
     @Column( nullable = false)
     private String senha;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Loan> emprestimoList = new ArrayList<>();
 
 }

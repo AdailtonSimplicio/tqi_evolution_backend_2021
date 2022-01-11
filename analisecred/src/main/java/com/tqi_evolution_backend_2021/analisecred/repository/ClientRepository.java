@@ -12,4 +12,7 @@ import java.util.Optional;
 public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "select c.* from cliente c WHERE c.email = :email AND c.senha = :senha ",nativeQuery = true)
     Optional<Client> GetLogin(String email, String senha);
+    Optional<Client> findByEmail(String email);
+    Optional<Client> findBySenha(String senha);
+    Client findByCpf(String cpf);
 }
